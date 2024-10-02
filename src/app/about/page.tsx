@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Hello World",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   };
 
 const AboutPage = () => {
-    return <div>
+    return <div style={{height: "calc(100vh - 64px)"}} className="mt-16">
         About
     </div>
 }

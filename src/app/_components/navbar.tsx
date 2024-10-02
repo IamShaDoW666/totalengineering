@@ -72,7 +72,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
-    <nav className="border-b top-0 shadow fixed w-screen z-50 backdrop-blur">
+    <nav className="border-b top-0 shadow fixed w-screen z-50 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">

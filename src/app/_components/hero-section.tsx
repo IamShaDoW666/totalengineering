@@ -1,9 +1,14 @@
-
+import AnimatedHeroSlider from "./client/animated-slider";
 
 const HeroSection = () => {
-    return <section style={{height: "calc(100vh - 64px)"}} className="flex flex-col mt-16 justify-center items-center text-foreground bg-secondary">
-        <h3>Hello World</h3>
+  return (
+    <section
+      style={{ height: "calc(100vh - 64px)" }}
+      className="mt-16 bg-white text-foreground"
+    >
+      <AnimatedHeroSlider />
     </section>
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;

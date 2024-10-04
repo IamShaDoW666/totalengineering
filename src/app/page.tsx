@@ -1,16 +1,21 @@
 import { HydrateClient } from "@/trpc/server";
 import HeroSection from "./_components/hero-section";
 import QuoteSection from "./_components/quote-section";
-import TestimonialSection from "./_components/testimonial-section";
+import GallerySection from "./_components/gallery-section";
+import AnimatedBackgroundSection from "./_components/animated-background";
+import CardSection from "./_components/card-section";
+import ContactSection from "./_components/contact-section";
 
 export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="h-screen scroll-smooth bg-red-400 text-white">
+      <main className="h-screen scroll-smooth text-white">
         <HeroSection />
         <QuoteSection />
-        <TestimonialSection />
+        <GallerySection />
+        <CardSection />
+        <ContactSection />
       </main>
     </HydrateClient>
   );

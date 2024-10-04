@@ -1,29 +1,11 @@
 "use client"
 
-import { useEffect, useState, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform, useInView } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 
-const useScrollProgress = () => {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPosition = window.scrollY
-      const newProgress = scrollPosition / totalHeight
-      setProgress(newProgress)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  return progress
-}
 
 const QuoteSection = () => {
-    const scrollProgress = useScrollProgress()
     const { scrollYProgress } = useScroll()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })

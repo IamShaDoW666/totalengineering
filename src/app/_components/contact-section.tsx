@@ -52,7 +52,7 @@ export default function ContactSection() {
         >
           <h2 className="text-3xl text-primary font-bold tracking-tighter sm:text-5xl text-center mb-8">Contact Us</h2>
           <p className="text-xl text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            We'd love to hear from you. Please fill out this form or use one of our contact methods below.
+            We&apos;d love to hear from you. Please fill out this form or use one of our contact methods below.
           </p>
         </motion.div>
 
@@ -100,7 +100,7 @@ export default function ContactSection() {
           </Card>
 
           <div className="space-y-6">
-            {contactMethods.map((method, index) => (
+            {contactMethods.map((method) => (
               <motion.div
                 key={method.title}
                 initial={{ opacity: 0, x: -20 }}

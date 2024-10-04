@@ -1,29 +1,10 @@
 "use client"
 
-import { useEffect, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 
-const useScrollProgress = () => {
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
-      const scrollPosition = window.scrollY
-      const newProgress = scrollPosition / totalHeight
-      setProgress(newProgress)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  return progress
-}
 
 export default function MottoSection() {
-  const scrollProgress = useScrollProgress()
   const { scrollYProgress } = useScroll()
   
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])

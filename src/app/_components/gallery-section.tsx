@@ -1,11 +1,9 @@
 "use client"
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
-import AnimatedBackgroundSection from './animated-background'
 
 const galleryItems = [
   { id: 1, src: "https://fastly.picsum.photos/id/140/2000/2000.jpg?hmac=p7mg1UE3BMr9DyYM71vdzMdrCnW0RZvwdxxOFNYG_IQ", alt: "Gallery Image 1" },

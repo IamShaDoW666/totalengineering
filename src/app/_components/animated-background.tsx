@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 

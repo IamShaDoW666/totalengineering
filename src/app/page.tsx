@@ -4,6 +4,7 @@ import QuoteSection from "./_components/quote-section";
 import GallerySection from "./_components/gallery-section";
 import CardSection from "./_components/card-section";
 import ContactSection from "./_components/contact-section";
+import ImageContentSection from "./_components/image-section";
 
 export default async function Home() {
 
@@ -12,6 +13,7 @@ export default async function Home() {
       <main className="h-screen scroll-smooth text-white">
         <HeroSection />
         <QuoteSection />
+        <ImageContentSection />
         <GallerySection />
         <CardSection />
         <ContactSection />

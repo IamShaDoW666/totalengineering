@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AboutUs from "../_components/about-us";
 
 export const metadata: Metadata = {
     title: "Hello World",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 const AboutPage = () => {
     return <div style={{height: "calc(100vh - 64px)"}} className="mt-16">
-        About
+        <AboutUs />
     </div>
 }
 

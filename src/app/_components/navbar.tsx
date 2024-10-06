@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Menu, Search, User, X } from "lucide-react"
 import Link from "next/link"
+import { ToggleTheme } from "./toggle-theme"
 
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => (
   <AnimatePresence>
@@ -146,7 +147,7 @@ export default function Navbar() {
           </div>
           <div className="hidden md:block">
             <div className="flex items-center">
-              <div className="relative">
+              <div className="relative mr-4">
                 <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-400" />
                 <Input
                   type="search"
@@ -154,7 +155,8 @@ export default function Navbar() {
                   className="pl-10 w-full md:w-[200px] lg:w-[300px]"
                 />
               </div>
-              <DropdownMenu>
+              <ToggleTheme />
+              {/* <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" className="ml-4">
                     <User className="h-5 w-5" />
@@ -168,7 +170,7 @@ export default function Navbar() {
                   <DropdownMenuItem>Settings</DropdownMenuItem>
                   <DropdownMenuItem>Sign out</DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
+              </DropdownMenu> */}
             </div>
           </div>
           <div className="md:hidden">

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import {motion} from 'framer-motion'
 export default function ImageContentSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground dark:bg-gray-900 mx-auto">
+    <section className="py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground dark:bg-gray-900 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="space-y-4 md:space-y-6">
@@ -13,7 +13,7 @@ export default function ImageContentSection() {
             initial={{y: "40%", opacity: 0}}
             whileInView={{y: 0, opacity: 1}}
             transition={{duration: 0.8}}
-             className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+             className="text-3xl dark:text-primary font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Transform Your Digital Presence
             </motion.h2>
             <motion.p

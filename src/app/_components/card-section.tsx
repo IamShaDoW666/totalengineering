@@ -72,7 +72,6 @@ export default function CardSection() {
   return (
     <section
       className="bg-secondary py-12"
-      style={{ height: "calc(100vh - 64px)" }}
     >
       <div className="container mx-auto px-4">
         <motion.h2

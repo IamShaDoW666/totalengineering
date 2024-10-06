@@ -43,7 +43,7 @@ const inputVariants = {
 
 export default function ContactSection() {
   return (
-    <section style={{height: "calc(100vh - 64px)"}} className="py-12 md:py-24 lg:py-32 bg-background">
+    <section className="py-12 md:py-24 lg:py-32 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -71,10 +71,10 @@ export default function AnimatedHeroSlider() {
             fill
             className="object-cover"
             priority
-          />
+          />          
           <div className="absolute inset-0 bg-black bg-opacity-40" />
           <motion.div
-            className="absolute inset-0 flex flex-col items-center justify-center gap-y-64 md:gap-y-0 text-center text-background p-4"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-y-64 md:gap-y-0 text-center text-background dark:text-primary p-4"
           >
             <motion.h2 initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -88,17 +88,17 @@ export default function AnimatedHeroSlider() {
 
       <button
         onClick={handlePrevious}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-background bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-background dark:bg-secondary  bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6 text-black" />
+        <ChevronLeft className="h-6 w-6 text-black dark:text-muted-foreground" />
       </button>
       <button
         onClick={handleNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-background bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-background dark:bg-secondary bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6 text-black" />
+        <ChevronRight className="h-6 w-6 text-black dark:text-muted-foreground" />
       </button>
 
       <div className="absolute bottom-4 left-0 right-0">
@@ -114,7 +114,7 @@ export default function AnimatedHeroSlider() {
                 }, 400)
               }}
               className={`w-3 h-3 rounded-full ${
-                index === currentIndex ? "bg-background" : "bg-secondary opacity-50"
+                index === currentIndex ? "bg-background dark:bg-foreground/50" : "bg-secondary dark:bg-secondary opacity-50"
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />
@@ -123,7 +123,7 @@ export default function AnimatedHeroSlider() {
       </div>
 
       {isAutoPlaying &&<motion.div
-        className="absolute bottom-0 left-0 h-1 bg-background"
+        className="absolute bottom-0 left-0 h-1 bg-background dark:bg-primary"
         initial={{ width: "0%" }}
         animate={{ width: "100%" }}
         transition={{ duration: 5, ease: "linear", repeat: Infinity }}

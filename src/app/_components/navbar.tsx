@@ -106,11 +106,11 @@ export default function Navbar() {
                           <NavigationMenuLink asChild>
                             <a
                               className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                              href="/"
+                              href="/products"
                             >
-                              <div className="text-sm font-medium leading-none">Product A</div>
+                              <div className="text-sm font-medium leading-none">All Products</div>
                               <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                Description for Product A
+                                View all products
                               </p>
                             </a>
                           </NavigationMenuLink>

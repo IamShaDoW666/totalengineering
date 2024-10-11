@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import Link from 'next/link'
 
 interface Product {
   id: number
@@ -111,24 +112,26 @@ export default function AllProducts() {
         animate="visible"
       >
         {getCurrentPageProducts().map((product) => (
+          <Link href={`/products/${product.id}`} key={product.id}>
           <motion.div
             key={product.id}
             className="bg-secondary rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
             variants={itemVariants}
             whileHover={{ y: -5 }}
-          >
+            >
             <Image
               src={product.image}
               alt={product.name}
               width={300}
               height={300}
               className="w-full h-64 object-cover"
-            />
+              />
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-2 text-foreground/80">{product.name}</h2>
               <p className="text-sm text-muted-foreground">{product.description}</p>
             </div>
           </motion.div>
+              </Link>
         ))}
       </motion.div>
       

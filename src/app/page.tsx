@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <HydrateClient>
-      <main className="h-screen scroll-smooth text-white">
+      <main className="scroll-smooth text-white">
         <HeroSection />
         <QuoteSection />
         <ImageContentSection />

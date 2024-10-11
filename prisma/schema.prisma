@@ -26,3 +26,16 @@ model Enquiry {
     message String? @db.Text
     createdAt DateTime @default(now())
 }
+
+model Category {
+    id Int @id @default(autoincrement())
+    name String
+    products Product[]
+}
+
+model Product {
+    id Int @id @default(autoincrement())
+    name String
+    category Category? @relation(fields: [categoryid], references: [id])
+    categoryid Int?
+}

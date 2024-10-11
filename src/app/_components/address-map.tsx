@@ -5,7 +5,7 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Replace with your actual Google Maps API key
-const GOOGLE_MAPS_API_KEY = "";
+const GOOGLE_MAPS_API_KEY = "AIzaSyCLQg10qOlNBUUfuHUeH2vpLLAIn9pKdac";
 
 const address = {
   street: "123 Main St",

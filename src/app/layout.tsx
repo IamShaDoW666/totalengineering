@@ -6,6 +6,7 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 import NavBar from "./_components/navbar";
 import { ThemeProvider } from "./_components/theme-provider";
+import Footer from "./_components/footer";
 
 export const metadata: Metadata = {
   title: "TotalEngineering",
@@ -20,14 +21,15 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <TRPCReactProvider>
-        <ThemeProvider
+          <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
           >
-          <NavBar />
-          {children}
+            <NavBar />
+            {children}
+            <Footer />
           </ThemeProvider>
         </TRPCReactProvider>
       </body>

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -42,7 +42,7 @@ export default function ImageContentSection() {
               alt="Digital Transformation"
               className="object-cover"
               height="600"
-              src="https://fastly.picsum.photos/id/140/2000/2000.jpg?hmac=p7mg1UE3BMr9DyYM71vdzMdrCnW0RZvwdxxOFNYG_IQ"
+              src={`https://picsum.photos/300/300`}
               style={{
                 aspectRatio: "800/600",
                 objectFit: "cover",

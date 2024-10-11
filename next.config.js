@@ -11,6 +11,14 @@ const config = {
             {
                 protocol: 'https',
                 hostname: 'fastly.picsum.photos',                
+            },
+            {
+                protocol: 'http',
+                hostname: 'localhost'
+            },
+            {
+                protocol: 'https',
+                hostname: 'picsum.photos'
             }
         ]
     }

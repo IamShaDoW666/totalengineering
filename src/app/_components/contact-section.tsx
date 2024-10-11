@@ -1,12 +1,14 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin } from 'lucide-react'
+import { api } from '@/trpc/react'
+
 
 const contactMethods = [
   {
@@ -42,8 +44,12 @@ const inputVariants = {
 }
 
 export default function ContactSection() {
+  const {mutate} = api.enquiry.create.useMutation()
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-background">
+    <section className="py-12 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -62,14 +68,17 @@ export default function ContactSection() {
               <CardTitle>Send us a message</CardTitle>
             </CardHeader>
             <CardContent>
-              <form className="space-y-4">
+              <form onSubmit={(e) => {
+                e.preventDefault()
+                mutate({message, email, name})
+              }} className="space-y-4">
                 <motion.div
                   variants={inputVariants}
                   initial="hidden"
                   animate="visible"
                   custom={0}
                 >
-                  <Input placeholder="Your Name" />
+                  <Input onChange={(e) => setName(e.target.value)} placeholder="Your Name" />
                 </motion.div>
                 <motion.div
                   variants={inputVariants}
@@ -77,15 +86,16 @@ export default function ContactSection() {
                   animate="visible"
                   custom={1}
                 >
-                  <Input type="email" placeholder="Your Email" />
+                  <Input onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Your Email" />
                 </motion.div>
+                
                 <motion.div
                   variants={inputVariants}
                   initial="hidden"
                   animate="visible"
                   custom={2}
                 >
-                  <Textarea placeholder="Your Message" rows={4} />
+                  <Textarea onChange={(e) => setMessage(e.target.value)} placeholder="Your Message" rows={4} />
                 </motion.div>
                 <motion.div
                   variants={inputVariants}

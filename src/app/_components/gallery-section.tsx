@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
+import InfiniteSlider from './infinite-slider'
 
 const galleryItems = [
   { id: 1, src: "https://fastly.picsum.photos/id/140/2000/2000.jpg?hmac=p7mg1UE3BMr9DyYM71vdzMdrCnW0RZvwdxxOFNYG_IQ", alt: "Gallery Image 1" },
@@ -40,6 +41,7 @@ export default function GallerySection() {
                         height={500}
                         className="w-full h-auto object-cover"
                       />
+                      <h1 className='text-center py-4'>Hwllo</h1>
                     </CardContent>
                   </Card>
                 </DialogTrigger>
@@ -57,6 +59,7 @@ export default function GallerySection() {
           ))}
         </div>
       </div>
+      <InfiniteSlider />
     </section>
   )
 }

@@ -18,3 +18,11 @@ model Post {
 
     @@index([name])
 }
+
+model Enquiry {
+    id Int @id @default(autoincrement())
+    name String
+    email String
+    message String? @db.Text
+    createdAt DateTime @default(now())
+}

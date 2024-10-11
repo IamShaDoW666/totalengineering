@@ -10,7 +10,7 @@ const QuoteSection = () => {
     const { scrollYProgress, scrollY } = useScroll()
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true })
-    const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
+    // const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
     const {theme} = useTheme()
     const textY = useTransform(scrollYProgress, [0, 1], ['-100%', '100%'])
     const textYSecond = useTransform(scrollYProgress, [0, 0.7], ['-200%', '200%'])
@@ -41,7 +41,7 @@ const QuoteSection = () => {
             //   animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Innovate. Create. Elevate.
+              Total Engineering LLC
             </motion.h1>
             <motion.p 
               className="mt-4 text-xl sm:text-2xl text-center text-primary/80"
@@ -50,7 +50,7 @@ const QuoteSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              Empowering your journey to digital excellence
+              High-Quality Metal Fabrication
             </motion.p>
           </CardContent>
         </Card>

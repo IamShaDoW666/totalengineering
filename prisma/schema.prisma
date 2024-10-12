@@ -33,9 +33,19 @@ model Category {
     products Product[]
 }
 
+model Image {
+    id Int @id @default(autoincrement())
+    path String
+    product Product? @relation(fields: [productId], references: [id])
+    productId Int?
+}
+
 model Product {
     id Int @id @default(autoincrement())
     name String
+    description String?
+    images Image[]
     category Category? @relation(fields: [categoryid], references: [id])
     categoryid Int?
+    createdAt DateTime @default(now())
 }

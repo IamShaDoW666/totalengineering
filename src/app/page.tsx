@@ -10,7 +10,6 @@ import AddressMap from "./_components/address-map";
 
 
 export default async function Home() {
-
   return (
     <HydrateClient>
       <main className="scroll-smooth text-white">

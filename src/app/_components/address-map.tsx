@@ -35,13 +35,8 @@ export default function AddressMap() {
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_, setMap] = useState<google.maps.Map | null>(null);
-
-  const onLoad = useCallback((map: google.maps.Map) => {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map);
-  }, []);
 
   const onUnmount = useCallback(() => {
     setMap(null);
@@ -61,9 +56,8 @@ export default function AddressMap() {
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
-                zoom={16}
-                onLoad={onLoad}
                 onUnmount={onUnmount}
+                zoom={15}
               >
                 <Marker position={center} />
               </GoogleMap>

@@ -1,6 +1,6 @@
 import AnimatedHeroSlider from "./client/animated-slider";
 
-const HeroSection = async () => {
+const HeroSection = () => {
   return (
     <section
       style={{ height: "calc(100vh - 64px)" }}

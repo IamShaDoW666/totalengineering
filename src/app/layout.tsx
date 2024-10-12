@@ -7,7 +7,6 @@ import { TRPCReactProvider } from "@/trpc/react";
 import NavBar from "./_components/navbar";
 import { ThemeProvider } from "./_components/theme-provider";
 import Footer from "./_components/footer";
-import { FloatingWhatsApp } from "react-floating-whatsapp";
 import Whatsapp from "./_components/floating-whatsapp";
 
 export const metadata: Metadata = {

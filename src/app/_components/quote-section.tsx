@@ -35,22 +35,22 @@ const QuoteSection = () => {
         <Card className="w-full max-w-4xl border-0 mx-auto bg-transparent shadow-none">
           <CardContent className="p-6">
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center text-primary"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-center text-primary mt-12"
               style={{ y: textY, opacity }}
-            //   initial={{ opacity: 0, y: 50 }}
-            //   animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               Total Engineering LLC
             </motion.h1>
             <motion.p 
-              className="mt-4 text-xl sm:text-2xl text-center text-primary/80"
+              className="mt-4 px-8 text-xl sm:text-2xl text-center text-primary/80"
               style={{ y: textYSecond, opacity }}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              High-Quality Metal Fabrication
+        Metal fabricators in coimbatore
             </motion.p>
           </CardContent>
         </Card>

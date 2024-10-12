@@ -5,18 +5,18 @@ import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 // Replace with your actual Google Maps API key
-const GOOGLE_MAPS_API_KEY = "AIzaSyCLQg10qOlNBUUfuHUeH2vpLLAIn9pKdac";
+const GOOGLE_MAPS_API_KEY = "AIzaSyCkeYNFGGgb-zQDLhAv24zgM8tj3Q84ylY";
 
 const address = {
-  street: "123 Main St",
-  city: "Anytown",
-  state: "ST",
-  zipCode: "12345",
-  country: "United States",
-  phone: "+1 (555) 123-4567",
-  email: "contact@example.com",
-  lat: 40.7128, // Replace with actual latitude
-  lng: -74.006, // Replace with actual longitude
+  street: "MGG Palayam",
+  city: "Coimbatore",
+  state: "ThamilNadu",
+  zipCode: "641107",
+  country: "India",
+  phone: "+919514399331",
+  email: "info@totaleng.in",
+  lat: 11.12810743055748, 
+  lng: 77.08240535155483, 
 };
 
 const mapContainerStyle = {
@@ -61,7 +61,7 @@ export default function AddressMap() {
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={center}
-                zoom={15}
+                zoom={16}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
               >

@@ -4,19 +4,19 @@ import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="bg-primary-foreground text-foreground mt-16 px-8 py-4"> 
-      {/* <div className="container mx-auto px-6 py-12"> */}
+    <footer className="bg-primary-foreground text-foreground mt-16 px-8 py-4 "> 
+     <div className="container mx-auto px-6 py-12"> 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
-              <Image src="https://picsum.photos/300/300" alt="Company Logo" width={40} height={40} className='rounded-full' />
+              <Image src="/logo.webp" alt="Company Logo" width={40} height={40} className='rounded-full' />
               <span className="text-xl font-bold text-primary">TotalEngineering LLC</span>
             </Link>
-            <p className="text-sm text-foreground/75">
+            <p className="text-lg text-foreground/75">
               We are dedicated to providing innovative solutions for your everyday needs. Our mission is to enhance lives through technology and exceptional service.
             </p>
           </div>
-          <div>
+          <div className="md:ml-32">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">About Us</h3>
             <ul className="space-y-2">
               <li><Link href="/about" className="hover:text-gray-900 transition-colors">Our Story</Link></li>
@@ -25,16 +25,16 @@ export default function Footer() {
               <li><Link href="/press" className="hover:text-gray-900 transition-colors">Press Releases</Link></li>
             </ul>
           </div>
-          <div>
+          <div className="md:ml-32">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">Contact</h3>
             <ul className="space-y-2">
-              <li>123 Tech Street, Suite 100</li>
-              <li>San Francisco, CA 94105</li>
-              <li>Phone: (123) 456-7890</li>
-              <li>Email: info@company.com</li>
+              <li>No.4/68H Sri Kanika Garden</li>
+              <li>Senthampalayam</li>
+              <li>MGC Palayam</li>
+              <li>Coimbatore-641107</li>
             </ul>
           </div>
-          <div>
+          <div className="md:ml-32">
             <h3 className="text-lg font-semibold mb-4 text-gray-900">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-900 transition-colors">
@@ -67,7 +67,7 @@ export default function Footer() {
               </ul>
             </nav>
           </div>
-        </div>
+        </div></div>
       {/* </div> */}
     </footer>
   )

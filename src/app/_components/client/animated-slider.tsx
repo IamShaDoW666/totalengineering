@@ -8,17 +8,17 @@ import { useEffect, useState } from "react"
 
 const slides = [
   {
-    image: "https://fastly.picsum.photos/id/140/2000/2000.jpg?hmac=p7mg1UE3BMr9DyYM71vdzMdrCnW0RZvwdxxOFNYG_IQ",
-    title: "Welcome to Our Website",
+    image: "/slide3.jpg",
+    title: "Delivering Precision and Quality in Every Turn",
     description: "Discover amazing products and services tailored just for you.",
   },
   {
-    image: "https://fastly.picsum.photos/id/891/2000/2000.jpg?hmac=VEnnHrX0ZlXfqe5jD2npLqrZAFn32GAfWzIJXzYKxkE",
-    title: "Explore Our Collection",
+    image: "/slider1.jpg",
+    title: "Where Creativity Meets Cutting-Edge Engineering",
     description: "Find the perfect item from our wide range of selections.",
   },
   {
-    image: "https://fastly.picsum.photos/id/314/2000/2000.jpg?hmac=i5U_UbMgsK1CpZMXm3vPYbpxLPSOwWbKtm3jJkcAY6M",
+    image: "/slider2.jpg",
     title: "Join Our Community",
     description: "Be part of a growing network of satisfied customers.",
   },
@@ -76,12 +76,12 @@ export default function AnimatedHeroSlider() {
           <motion.div
             className="absolute inset-0 flex flex-col items-center justify-center gap-y-64 md:gap-y-0 text-center text-background dark:text-primary p-4"
           >
-            <motion.h2 initial={{ y: 20, opacity: 0 }}
+            <motion.h1 initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5, staggerChildren: 0.5 }} className="text-4xl font-bold mb-4">{slides[currentIndex]!.title}</motion.h2>
+            transition={{ delay: 0.2, duration: 0.5, staggerChildren: 0.5 }} className="md:text-7xl text-2xl font-bold mb-4">{slides[currentIndex]!.title}</motion.h1>
             <motion.p initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.5, staggerChildren: 0.5 }} className="text-xl max-w-2xl">{slides[currentIndex]!.description}</motion.p>
+            transition={{ delay: 0.4, duration: 0.5, staggerChildren: 0.5 }} className="text-2xl max-w-2xl">{slides[currentIndex]!.description}</motion.p>
           </motion.div>
         </motion.div>
       </AnimatePresence>

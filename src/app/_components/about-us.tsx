@@ -20,42 +20,49 @@ export default function AboutUs() {
   ]
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 ">
       {/* Hero Section */}
-      <motion.section className="text-center mb-16" {...fadeIn}>
+      <motion.section className="text-center mb-16 mt-16" {...fadeIn}>
         <motion.h1
           className="text-4xl text-primary font-bold mb-4"
           initial={{ scale: 0.5, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          About Total Engineering
+          Welcome to Total Engineering Coimbatore
         </motion.h1>
-        <p className="text-xl text-muted-foreground">Innovating for a better tomorrow</p>
+        <p className="text-xl text-muted-foreground">Precision Engineering Services in Coimbatore</p>
       </motion.section>
 
       {/* Company Overview */}
       <motion.section className="grid md:grid-cols-2 gap-8 mb-16" {...fadeIn}>
         <div className="p-8 border-primary border-1 rounded shadow text-muted-foreground">
-          <h2 className="text-3xl font-semibold mb-4 text-primary">Our Story</h2>
-          <p className="mb-4">
-            Founded in 2010, Total Engineering has been at the forefront of technological innovation for over a
-            decade. Our team of expert engineers and visionaries work tirelessly to solve complex problems and create
-            cutting-edge solutions that shape the future.
+          <h2 className="text-3xl font-semibold mb-4 text-primary">Our Precision Engineering Solutions</h2>
+          <p className="mb-4 text-lg">
+          
+            CNC Machining: Utilizing state-of-the-art CNC machines, we produce intricate parts with unparalleled accuracy. Our machining services cater to both small and large-scale production needs.
+           
+            Laser Cutting: Our advanced laser cutting technology allows us to achieve precise cuts and complex shapes in various materials, ensuring clean edges and minimal waste.
+          
+            Timely Delivery: Our streamlined processes enable us to deliver projects on time, every time, without compromising on quality.
+          
+          
           </p>
-          <p>
-            With a focus on sustainability and efficiency, we&apos;ve successfully completed projects across various industries,
-            from aerospace to renewable energy. Our commitment to excellence and innovation drives us to push the boundaries
-            of what&apos;s possible in engineering.
+         
+          <h2 className="text-3xl font-semibold mb-4 text-primary mt-8">Engineering Turning</h2>
+          <p className="mb-4 text-lg">
+          Our state-of-the-art turning services utilize advanced CNC machinery to produce precise components with tight tolerances. Whether you require intricate designs or high-volume production, our skilled technicians ensure accuracy and efficiency in every project. We work with a variety of materials, including stainless steel, aluminum, and other metals, to achieve the best results for your application.
           </p>
         </div>
-        <motion.div
+        
+        <motion.div className="border-1  mx-auto justify-center mt-16"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
+          
         >
           <Image
-            src="https://fastly.picsum.photos/id/1028/400/300.jpg?hmac=XAhpkUGlpfj8CYFvssSKc8sD64v9Q5rTaP34XQZ80AI"
+            src="/1-3.jpg"
             alt="Total Engineering Office"
             width={600}
             height={400}
@@ -67,7 +74,7 @@ export default function AboutUs() {
       {/* Team Members */}
       <motion.section className="mb-16" {...fadeIn}>
         <h2 className="text-3xl text-primary font-semibold mb-8 text-center">Our Leadership</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}

@@ -5,11 +5,11 @@ import { motion, useAnimation, useMotionValue } from "framer-motion"
 import Image from "next/image"
 
 const images = [
-  "https://picsum.photos/300/300",
-  "https://picsum.photos/300/300",
-  "https://picsum.photos/300/300",
-  "https://picsum.photos/300/300",
-  "https://picsum.photos/300/300",
+  "/sl.jpg",
+  "/sl1.jpg",
+  "/sl2.jpg",
+  "/sl.jpg",
+  "/sl1.jpg",
 ]
 
 function useInfiniteSlider(images: string[], duration = 50) {
@@ -19,7 +19,7 @@ function useInfiniteSlider(images: string[], duration = 50) {
 
   useEffect(() => {
     const calculateWidth = () => {
-      const imageWidth = 110 // Adjust this value based on your image width
+      const imageWidth = 110// Adjust this value based on your image width
       const gap = 16 // Adjust this value based on your gap between images
       return images.length * (imageWidth + gap)
     }
@@ -62,9 +62,9 @@ export default function InfiniteSlider() {
             <Image
               src={src}
               alt={`Slide ${index + 1}`}
-              width={110}
-              height={60}
-              className="rounded-lg object-cover"
+              width={257}
+              height={68}
+              className="rounded-lg object-cover h-[68px]"
             />
           </div>
         ))}

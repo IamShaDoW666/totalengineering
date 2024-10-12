@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input"
 import { Menu, Search, X } from "lucide-react"
 import Link from "next/link"
 import { ToggleTheme } from "./toggle-theme"
+import Image from "next/image"
 
 const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => (
   <AnimatePresence>
@@ -66,17 +67,25 @@ export default function Navbar() {
 
   return (
     <nav className="border-b top-0 shadow fixed w-screen z-50 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0" prefetch={false}>
-              <span className="text-2xl font-bold text-primary">Logo</span>
+            <Link href="/" className="flex-shrink-0 flex items-center gap-x-4" prefetch={false}>
+            <Image src={"/logo.webp"} alt="Logo"  width={100} height={10} className="h-12 w-8"/>
+              <span className="text-2xl font-bold text-primary">Total Engineering</span>
             </Link>
             <div className="hidden md:block ml-10">
               <NavigationMenu>
                 <NavigationMenuList>
+                <NavigationMenuItem>
+                <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/">
+                      Home
+                    </NavigationMenuLink>
+                </NavigationMenuItem>
+
                   <NavigationMenuItem>
-                    <NavigationMenuTrigger className="bg-background text-foreground">Products</NavigationMenuTrigger>
+                 
+                    <NavigationMenuTrigger className="bg-background text-foreground text-lg">Products</NavigationMenuTrigger>
                     <NavigationMenuContent>
                       <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                         <li className="row-span-3">
@@ -124,12 +133,12 @@ export default function Navbar() {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/about">
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/about">
                       About
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/contact">
+                    <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/contact">
                       Contact
                     </NavigationMenuLink>
                   </NavigationMenuItem>

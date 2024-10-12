@@ -7,24 +7,24 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    question: "What is shadcn/ui?",
-    answer: "shadcn/ui is a collection of re-usable components built using Radix UI and Tailwind CSS. It's not a component library, but a set of components you can copy and paste into your apps.",
+    question: "What types of metal fabrication services do you offer?",
+    answer: "We provide a wide range of metal fabrication services, including cutting, welding, bending, and assembly. Our team is skilled in working with various materials such as steel, aluminum, and stainless steel to meet your specific project requirements.",
   },
   {
-    question: "Is it free to use?",
-    answer: "Yes, shadcn/ui is completely free and open-source. You can use it in your personal and commercial projects without any restrictions.",
+    question: "Do you offer custom lathe turning services?",
+    answer: "Yes, we specialize in custom lathe turning services. Our state-of-the-art CNC lathes enable us to produce precision components tailored to your specifications, whether for small or large production runs.",
   },
   {
-    question: "Can I use it with Next.js?",
-    answer: "shadcn/ui works great with Next.js and other React-based frameworks. It's designed to be flexible and easy to integrate into various project setups.",
+    question: "What industries do you serve?",
+    answer: "We cater to various industries, including automotive, aerospace, construction, and manufacturing. Our expertise allows us to adapt our services to meet the unique demands of each sector.",
   },
   {
-    question: "How do I customize the components?",
-    answer: "You can customize shadcn/ui components by modifying the Tailwind CSS classes or editing the component code directly. The components are designed to be easily customizable to fit your project's needs.",
+    question: "How can I request a quote for my project?",
+    answer: "To request a quote, simply contact us through our website's inquiry form or give us a call. Please provide details about your project, including materials, dimensions, and quantities, so we can give you an accurate estimate.",
   },
   {
-    question: "Is shadcn/ui responsive?",
-    answer: "Yes, the components in shadcn/ui are built with responsiveness in mind. However, you may need to adjust some styles or layouts to fit your specific design requirements across different screen sizes.",
+    question: "Do you have quality assurance processes in place?",
+    answer: "Absolutely. At Total Engineering, we prioritize quality and have stringent quality assurance processes in place. Our team conducts regular inspections throughout the fabrication and turning processes to ensure that every component meets industry standards and client expectations.",
   },
 ]
 
@@ -60,7 +60,7 @@ export default function Faq() {
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <p className="pt-4 pb-2 text-gray-600">{faq.answer}</p>
+                    <p className="pt-4 pb-2 text-gray-600 text-lg">{faq.answer}</p>
                   </motion.div>
                 </AccordionContent>
               )}

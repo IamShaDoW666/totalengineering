@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   };
 
 const AboutPage = () => {
-    return <div style={{height: "calc(100vh - 64px)"}} className="mt-16">
+    return <div className="mt-16">
         <AboutUs />
     </div>
 }

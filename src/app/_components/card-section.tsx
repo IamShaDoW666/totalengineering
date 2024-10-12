@@ -8,32 +8,32 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Database, Radio, CalendarRange, Zap, type LucideProps } from "lucide-react";
+import { Database, ThumbsUp, User, Zap,Microscope, type LucideProps } from "lucide-react";
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 const specs = [
   {
-    title: "Processor",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    title: "Quality",
+    description: "We prioritize precision and quality in every project, ensuring that our products meet the highest standards",
+    icon: ThumbsUp,
+  },
+  {
+    title: "Integrity",
+    description:
+      "We conduct our business with honesty and transparency, building trust with our clients and partners",
     icon: Database,
   },
   {
-    title: "Battery Life",
+    title: "Innovation",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam tortor, tincidunt eget viverra",
-    icon: Radio,
+      "We embrace new technologies and processes to enhance our services and deliver cutting-edge solutions.",
+    icon: Microscope,
   },
   {
-    title: "Connectivity",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.dolor sit amet, consectetur adipiscing elit.",
-    icon: CalendarRange,
-  },
-  {
-    title: "Fast Charging",
+    title: "Customer Focus",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam tortor, tincidunt eget viverra",
-    icon: Zap,
+    icon: User,
   },
 ];
 

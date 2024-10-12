@@ -5,14 +5,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
 import InfiniteSlider from './infinite-slider'
+import { title } from 'process'
 
 const galleryItems = [
-  { id: 1, src: "https://fastly.picsum.photos/id/140/2000/2000.jpg?hmac=p7mg1UE3BMr9DyYM71vdzMdrCnW0RZvwdxxOFNYG_IQ", alt: "Gallery Image 1" },
-  { id: 2, src: "https://fastly.picsum.photos/id/859/500/500.jpg?hmac=N-60r-0gejf53svwG2w7EGU1JDpL5zOd-gJZTSsxVyw", alt: "Gallery Image 2" },
-  { id: 3, src: "https://fastly.picsum.photos/id/160/500/500.jpg?hmac=LwWd1t8fc3efiUs2ani3PlzylhPR1S5r4Ze68UO8cw4", alt: "Gallery Image 3" },
-  { id: 4, src: "https://fastly.picsum.photos/id/469/500/500.jpg?hmac=BHkrKLd_URIkqjZ1czEQW8VU6jk4NBixFMVPNud2LPg", alt: "Gallery Image 4" },
-  { id: 5, src: "https://fastly.picsum.photos/id/650/500/500.jpg?hmac=2_B-FRq64ubwHauceT-OqNzNdwiWoU1DbaAgwS8peD4", alt: "Gallery Image 5" },
-  { id: 6, src: "https://fastly.picsum.photos/id/38/500/500.jpg?hmac=P2ck2JJoFY6U4RS1VwfQve2kzwgG-1D_6PwXf-oi5jo", alt: "Gallery Image 6" },
+  { id: 1, src: "/2-1.png", alt: "Gallery Image 1",title: "hello" },
+  { id: 2, src: "/5.png", alt: "Gallery Image 2",title: "hello2" },
+  { id: 3, src: "/7.png", alt: "Gallery Image 3",title: "hello3" },
+  { id: 4, src: "/9.png", alt: "Gallery Image 4",title: "hello4" },
+  { id: 5, src: "/23.png", alt: "Gallery Image 5",title: "hello5" },
+  { id: 6, src: "/23.png", alt: "Gallery Image 6",title: "hello6" },
 ]
 
 export default function GallerySection() {
@@ -32,7 +33,7 @@ export default function GallerySection() {
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Card className="overflow-hidden w-3/4 mx-auto cursor-pointer transition-transform duration-300 hover:scale-105">
+                  <Card className="overflow-hidden w-full md:w-3/4 mx-auto cursor-pointer transition-transform duration-300 hover:scale-105">
                     <CardContent className="p-0">
                       <Image
                         src={item.src}
@@ -41,7 +42,7 @@ export default function GallerySection() {
                         height={500}
                         className="w-full h-auto object-cover"
                       />
-                      <h1 className='text-center py-4'>Hwllo</h1>
+                      <h1 className='text-center text-2xl py-4'>{item.title}</h1>
                     </CardContent>
                   </Card>
                 </DialogTrigger>

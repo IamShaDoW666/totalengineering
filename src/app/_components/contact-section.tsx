@@ -14,19 +14,19 @@ const contactMethods = [
   {
     icon: Phone,
     title: "Phone",
-    details: "+1 (555) 000-0000",
+    details: "+919514399331",
     delay: 0.2,
   },
   {
     icon: Mail,
     title: "Email",
-    details: "hello@example.com",
+    details: "info@totaleng.in",
     delay: 0.4,
   },
   {
     icon: MapPin,
     title: "Office",
-    details: "123 Business Ave, Suite 100, City, State 12345",
+    details: "Sri Kanika Garden,MGC Palayam,Coimbatore-641107",
     delay: 0.6,
   },
 ]
@@ -122,7 +122,7 @@ export default function ContactSection() {
                     <method.icon className="h-10 w-10 text-primary mr-4" />
                     <div>
                       <h3 className="font-semibold">{method.title}</h3>
-                      <p className="text-sm text-muted-foreground">{method.details}</p>
+                      <p className="text-lg text-muted-foreground">{method.details}</p>
                     </div>
                   </CardContent>
                 </Card>

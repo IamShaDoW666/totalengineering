@@ -2,7 +2,6 @@
 'use client';
 
 import { FloatingWhatsApp } from 'react-floating-whatsapp'
-import Image from 'next/image'
 export default function Whatsapp() {
 
   return (

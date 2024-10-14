@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   };
 
 const AboutPage = () => {
-    return <div className="mt-16">
+    return <div className="pt-24">
         <AboutUs />
     </div>
 }

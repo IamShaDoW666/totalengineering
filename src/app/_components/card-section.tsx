@@ -8,13 +8,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Database, ThumbsUp, User, Zap,Microscope, type LucideProps } from "lucide-react";
+import {
+  Database,
+  ThumbsUp,
+  User,
+  Microscope,
+  type LucideProps,
+} from "lucide-react";
 import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
 const specs = [
   {
     title: "Quality",
-    description: "We prioritize precision and quality in every project, ensuring that our products meet the highest standards",
+    description:
+      "We prioritize precision and quality in every project, ensuring that our products meet the highest standards",
     icon: ThumbsUp,
   },
   {
@@ -56,7 +63,7 @@ const SpecCard = ({
     whileHover={{ scale: 1.1, transition: { duration: 0.1, ease: "easeIn" } }}
     transition={{ duration: 0.3, delay: index * 0.15 }}
   >
-    <Card className="h-full pb-16 cursor-pointer transition-all duration-300 hover:shadow-lg">
+    <Card className="h-full cursor-pointer pb-16 transition-all duration-300 hover:shadow-lg">
       <CardHeader>
         <Icon className="mb-2 h-16 w-16 text-primary" />
         <CardTitle>{title}</CardTitle>
@@ -70,9 +77,7 @@ const SpecCard = ({
 
 export default function CardSection() {
   return (
-    <section
-      className="bg-secondary py-12"
-    >
+    <section className="bg-secondary py-12">
       <div className="container mx-auto px-4">
         <motion.h2
           className="mb-12 text-center text-3xl font-bold text-primary sm:text-4xl"

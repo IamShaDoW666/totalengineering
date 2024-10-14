@@ -1,59 +1,26 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import Link from 'next/link'
-
-interface Product {
-  id: number
-  name: string
-  description: string
-  image: string
-  category: string | undefined
-}
-
-const categories = ['All', 'Electronics', 'Clothing', 'Books', 'Home & Garden']
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Link from "next/link";
+import { api } from "@/trpc/react";
+import ProductSkeleton from "../products/components/products-skeleton";
 
 export default function AllProducts() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [currentPage, setCurrentPage] = useState(1)
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
-  const productsPerPage = 8
-  const [totalPages, setTotalPages] = useState(0)
-  const [selectedCategory, setSelectedCategory] = useState('All')
-
-  useEffect(() => {
-    // Simulating an API call to fetch products
-    const fetchProducts = async () => {
-      // In a real application, this would be an API call
-      const dummyProducts: Product[] = Array.from({ length: 32 }, (_, i) => ({
-        id: i + 1,
-        name: `Product ${i + 1}`,
-        description: `A brief description of Product ${i + 1}`,
-        image: `https://fastly.picsum.photos/id/62/200/200.jpg?hmac=IdjAu94sGce82DBYTMbOYzXr7kup1tYqdr0bHkRDWUs`,
-        category: categories[Math.floor(Math.random() * (categories.length - 1)) + 1]
-      }))
-      setProducts(dummyProducts)
-      setFilteredProducts(dummyProducts)
-      setTotalPages(Math.ceil(dummyProducts.length / productsPerPage))
-    }
-    // eslint-disable-next-line
-    fetchProducts()
-  }, [])
-
-  useEffect(() => {
-    const filtered = selectedCategory === 'All'
-      ? products
-      : products.filter(product => product.category === selectedCategory)
-    setFilteredProducts(filtered)
-    setTotalPages(Math.ceil(filtered.length / productsPerPage))
-    setCurrentPage(1)
-  }, [selectedCategory, products])
-
+  const [selectedCategory, setSelectedCategory] = useState<
+    string | undefined
+  >();
+  const products = api.product.getAll.useQuery(selectedCategory);
+  const categories = api.category.getAll.useQuery();
+  console.log(categories)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -62,7 +29,7 @@ export default function AllProducts() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -70,94 +37,75 @@ export default function AllProducts() {
       y: 0,
       opacity: 1,
     },
-  }
+  };
 
-  const getCurrentPageProducts = () => {
-    const startIndex = (currentPage - 1) * productsPerPage
-    const endIndex = startIndex + productsPerPage
-    return filteredProducts.slice(startIndex, endIndex)
-  }
-
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage)
-    window.scrollTo(0, 0)
-  }
-
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category)
-  }
+  const handleCategoryChange = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+  };
 
   return (
-    <div className="mx-auto px-4 py-12 bg-background">
-      <h1 className="text-4xl font-light mb-12 text-center text-foreground">Our Products</h1>
+    <div className="mx-auto bg-background px-4 py-12">
+      <h1 className="text-center text-4xl text-primary">
+        Our Products
+      </h1>
       <div className="mb-8 flex justify-end">
-        <Select onValueChange={handleCategoryChange} value={selectedCategory}>
+        <Select
+          onValueChange={handleCategoryChange}
+          value={selectedCategory ?? ""}
+        >
           <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select category" />
+            <SelectValue placeholder="All" />
           </SelectTrigger>
           <SelectContent>
-            {categories.map((category) => (
-              <SelectItem key={category} value={category}>
-                {category}
+            <SelectItem key={0} value="0">
+              All
+            </SelectItem>
+            {categories.data?.map((category) => (
+              <SelectItem key={category.id} value={category.id.toString()}>
+                {category.name}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
-      <motion.div
-        key={currentPage}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {getCurrentPageProducts().map((product) => (
-          <Link href={`/products/${product.id}`} key={product.id}>
-          <motion.div
-            key={product.id}
-            className="bg-secondary rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
-            variants={itemVariants}
-            whileHover={{ y: -5 }}
-            >
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="w-full h-64 object-cover"
-              />
-            <div className="p-6">
-              <h2 className="text-xl font-semibold mb-2 text-foreground/80">{product.name}</h2>
-              <p className="text-sm text-muted-foreground">{product.description}</p>
-            </div>
-          </motion.div>
-              </Link>
-        ))}
-      </motion.div>
-      
-      <div className="mt-12 flex justify-center items-center space-x-4">
-        <Button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          variant="outline"
-          size="icon"
-          aria-label="Previous page"
+
+      {products.data ? (
+        <motion.div
+          className="container mx-auto grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <ChevronLeft className="h-4 w-4" />
-        </Button>
-        <span className="text-sm text-gray-600">
-          Page {currentPage} of {totalPages}
-        </span>
-        <Button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          variant="outline"
-          size="icon"
-          aria-label="Next page"
-        >
-          <ChevronRight className="h-4 w-4" />
-        </Button>
-      </div>
+          {products.data?.map((product) => (
+            <Link href={`/products/${product.id}`} key={product.id}>
+              <motion.div
+                key={product.id}
+                className="overflow-hidden rounded-lg bg-secondary shadow-sm transition-shadow duration-300 hover:shadow-md"
+                variants={itemVariants}
+                whileHover={{ y: -5 }}
+              >
+                <Image
+                  src={product.images[0]?.path ?? ""}
+                  alt={product.name}
+                  width={300}
+                  height={300}
+                  className="h-64 w-full object-cover"
+                />
+                <div className="p-6">
+                  <h2 className="mb-2 text-xl font-semibold text-foreground/80">
+                    {product.name}
+                  </h2>
+                  <p className="text-sm text-muted-foreground">
+                    {product.description}
+                  </p>
+                </div>
+              </motion.div>
+            </Link>
+          ))}
+        </motion.div>
+      ) : (
+        <ProductSkeleton />
+      )}
     </div>
-  )
+  );
 }

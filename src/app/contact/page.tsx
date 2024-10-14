@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   };
 
 const ContactPage = () => {
-    return <div className="mt-16">
+    return <div className="pt-24">
         <ContactUs />
     </div>
 }

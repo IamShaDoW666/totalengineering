@@ -74,8 +74,8 @@ const Slider = () => {
 
 export default function HeroPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[calc(100vh-4rem)]">
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[calc(100vh-64px)]">
         <div className="h-[400px] md:h-[600px]">
           <Slider />
         </div>

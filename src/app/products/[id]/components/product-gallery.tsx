@@ -2,9 +2,10 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
+import type { Image as ImageType } from '@prisma/client'
 
 type ProductGalleryProps = {
-  images: string[]
+  images: ImageType[]
 }
 
 export function ProductGallery({ images }: ProductGalleryProps) {
@@ -14,7 +15,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
     <div className="space-y-4">
       <div className="relative aspect-square overflow-hidden rounded-lg">
         <Image
-          src={images[selectedImage] ?? ''}
+          src={images[selectedImage]?.path ?? ''}
           alt="Product image"
           fill
           className="object-cover"
@@ -30,7 +31,7 @@ export function ProductGallery({ images }: ProductGalleryProps) {
             }`}
           >
             <Image
-              src={image}
+              src={image.path}
               alt={`Product thumbnail ${index + 1}`}
               fill
               className="object-cover"

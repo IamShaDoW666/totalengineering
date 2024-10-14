@@ -5,7 +5,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import Image from "next/image"
 import InfiniteSlider from './infinite-slider'
-import { title } from 'process'
 
 const galleryItems = [
   { id: 1, src: "/2-1.png", alt: "Gallery Image 1",title: "hello" },

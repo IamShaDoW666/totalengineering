@@ -83,10 +83,10 @@ export default function Navbar() {
                     </NavigationMenuLink>
                 </NavigationMenuItem>
 
-                  <NavigationMenuItem>
+                 {/*<NavigationMenuItem>
                  
                     <NavigationMenuTrigger className="bg-background text-foreground text-lg">Products</NavigationMenuTrigger>
-                    <NavigationMenuContent>
+                     <NavigationMenuContent>
                       <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                         <li className="row-span-3">
                           <NavigationMenuLink asChild>
@@ -131,7 +131,7 @@ export default function Navbar() {
                         </li>
                       </ul>
                     </NavigationMenuContent>
-                  </NavigationMenuItem>
+                  </NavigationMenuItem> */}
                   <NavigationMenuItem>
                     <NavigationMenuLink className="group inline-flex h-10 w-max items-center justify-center rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 text-foreground" href="/about">
                       About

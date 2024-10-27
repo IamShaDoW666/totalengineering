@@ -7,12 +7,17 @@ import Image from "next/image"
 import InfiniteSlider from './infinite-slider'
 
 const galleryItems = [
-  { id: 1, src: "/2-1.png", alt: "Gallery Image 1",title: "hello" },
-  { id: 2, src: "/5.png", alt: "Gallery Image 2",title: "hello2" },
-  { id: 3, src: "/7.png", alt: "Gallery Image 3",title: "hello3" },
-  { id: 4, src: "/9.png", alt: "Gallery Image 4",title: "hello4" },
-  { id: 5, src: "/23.png", alt: "Gallery Image 5",title: "hello5" },
-  { id: 6, src: "/23.png", alt: "Gallery Image 6",title: "hello6" },
+  { id: 1, src: "/2-1.png", alt: "Gallery Image 1",title: "" },
+  { id: 2, src: "/5.png", alt: "Gallery Image 2",title: "" },
+  { id: 3, src: "/7.png", alt: "Gallery Image 3",title: "" },
+  { id: 4, src: "/9.png", alt: "Gallery Image 4",title: "" },
+  { id: 5, src: "/23.png", alt: "Gallery Image 5",title: "" },
+  { id: 6, src: "/23.png", alt: "Gallery Image 6",title: "" },
+  { id: 7, src: "/total3.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 8, src: "/total4.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 9, src: "/total5.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 10, src: "/total6.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 11, src: "/total7.jpeg",alt: "Gallery Image 6",title: "" },
 ]
 
 export default function GallerySection() {
@@ -39,19 +44,19 @@ export default function GallerySection() {
                         alt={item.alt}
                         width={500}
                         height={500}
-                        className="w-full h-auto object-cover"
+                        className="w-full h-72 object-cover"
                       />
                       <h1 className='text-center text-2xl py-4'>{item.title}</h1>
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="max-w-xl">
+                <DialogContent className="max-w-4xl">
                   <Image
                     src={item.src}
                     alt={item.alt}
-                    width={1200}
+                    width={1000}
                     height={800}
-                    className="w-full h-auto object-contain"
+                    className="w-full h-120 object-contain"
                   />
                 </DialogContent>
               </Dialog>

@@ -51,7 +51,9 @@ const QuoteSection = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
         Metal fabricators in coimbatore
+        
             </motion.p>
+           
           </CardContent>
         </Card>
       </div>

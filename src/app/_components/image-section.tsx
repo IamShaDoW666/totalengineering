@@ -21,19 +21,13 @@ export default function ImageContentSection() {
              whileInView={{y: 0, opacity: 1}}
              transition={{duration: 0.8, delay: 0.2}}
              className="max-w-[600px] text-primary-foreground/70 md:text-xl/relaxed lg:text-lg/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Welcome to Total Engineering, your trusted partner for high-quality fabrication services in Coimbatore. With years of experience in the industry, we specialize in delivering customized solutions that meet the unique needs of our clients.
-              
-              
-          
-          
-                             
-              Our workshop features cutting-edge equipment that ensures precision and efficiency in every project.
-                      
-              Our team of experienced engineers and fabricators are dedicated to producing high-quality results, no matter the complexity of the job.
-              We understand that every project is unique. Our facility is designed to accommodate custom orders and tailor solutions to meet your specific needs.
-           
-        
-          </motion.p>
+              Architectural metal works<br/>
+              Structuaral works,Metal Stairway and Railing<br/>
+              Fcades & Claddigngs<br/>
+              Custom made Furnitures,Lights,Partitions,Garden bollards,Mirrors<br/>
+              Signage<br/>
+              Sculptures 
+              </motion.p>
           
             <motion.div 
             initial={{opacity: 0}}

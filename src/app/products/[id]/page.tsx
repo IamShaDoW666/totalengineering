@@ -4,9 +4,11 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ProductGallery } from "./components/product-gallery";
 import { api } from "@/trpc/server";
-import { Graph } from "schema-dts";
+import type { Graph } from "schema-dts";
 import { headers } from "next/headers";
 import { faker } from "@faker-js/faker";
+
+
 
 export async function generateMetadata({
   params,
@@ -22,7 +24,44 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: product.description,
+    metadataBase: new URL ("https://totalengg.in"),
+    alternates: {
+    canonical: '/',
+    languages: {
+        'en-US': '/en-US', 
+      },
+    },
+    openGraph:{
+    title:product.name,
+    url:`${process.env.BASE_URL}`,
+    description: product?.description ?? '',
+    siteName:"https://totalengg.in",
+    images:[
+    {
+     url:`${process.env.BASE_URL}`,
+     width:"800",
+     height:"800",
+     }    
+     ],
+     locale: 'en_US',
+     type: 'website',
+    },
+    twitter:{
+    title:product.name,
+    description:product?.description ?? '',
+    site:"https://totalengg.in",
+    images:[
+    {    
+    url:`${process.env.BASE_URL}$`,
+    width:"800",
+    height:"800",
+    }
+      
+    ]
+    }
+    
   };
+
 }
 
 export default async function ProductPage({
@@ -32,7 +71,7 @@ export default async function ProductPage({
 }) {
   // const router = useRouter();
   const product = await api.product.getById({ id: parseInt(params.id) });
-  const pathName = headers().get('x-next-pathname') as string  
+  const pathName = headers().get('x-next-pathname')!  
   const jsonLd: Graph = {
     "@context": "https://schema.org",
     "@graph": [
@@ -42,10 +81,19 @@ export default async function ProductPage({
         name: "Total Engineering",
       },
       {
+        "@type": "ImageObject",
+        "@id": `${process.env.BASE_URL}/#ImageObject`,
+        url: `${process.env.BASE_URL}/${pathName}`,
+        image: product?.images[0]?.path,
+
+      },
+
+
+      {
         "@type": "WebSite",
         "@id": `${process.env.BASE_URL}/#website`,
         url: `${process.env.BASE_URL}`,
-        publisher: { "@id": `${process.env.BASE_URL}/#organization` },
+        publisher: { "@id": `${process.env.BASE_URL}/#website` },
         inLanguage: "en-GB",
       },
       {

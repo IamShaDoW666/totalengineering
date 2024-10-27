@@ -72,7 +72,7 @@ export default function AboutUs() {
       </motion.section>
 
       {/* Team Members */}
-      <motion.section className="mb-16" {...fadeIn}>
+      {/* <motion.section className="mb-16" {...fadeIn}>
         <h2 className="text-3xl text-primary font-semibold mb-8 text-center">Our Leadership</h2>
         <div className="grid md:grid-cols-3 gap-8 text-center">
           {teamMembers.map((member, index) => (
@@ -105,7 +105,7 @@ export default function AboutUs() {
             </motion.div>
           ))}
         </div>
-      </motion.section>
+      </motion.section> */}
 
       {/* Call to Action */}
       <motion.section

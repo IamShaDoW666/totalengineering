@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Graph } from "schema-dts";
+import type { Graph } from "schema-dts";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 import Link from "next/link";
 import { api } from "@/trpc/react";
-import ProductSkeleton from "../products/components/products-skeleton";
+import ProductSkeleton from "../(main)/products/components/products-skeleton";
 
 export default function AllProducts() {
   const [selectedCategory, setSelectedCategory] = useState<

@@ -22,30 +22,14 @@ export default function AdminDashboard() {
     { id: 3, name: "Novel", category: "Books", price: 9.99 },
   ])
 
-  const [editingCategory, setEditingCategory] = useState(null)
-  const [editingProduct, setEditingProduct] = useState(null)
 
-  const handleAddCategory = (name: string) => {
-    const newCategory = { id: categories.length + 1, name }
-    setCategories([...categories, newCategory])
-  }
 
-  const handleEditCategory = (id: number, name: string) => {
-    setCategories(categories.map(cat => cat.id === id ? { ...cat, name } : cat))
-  }
 
   const handleDeleteCategory = (id: number) => {
     setCategories(categories.filter(cat => cat.id !== id))
   }
 
-  const handleAddProduct = (name: string, category: string, price: string) => {
-    const newProduct = { id: products.length + 1, name, category, price: parseFloat(price) }
-    setProducts([...products, newProduct])
-  }
 
-  const handleEditProduct = (id: number, name: string, category: string, price: string) => {
-    setProducts(products.map(prod => prod.id === id ? { ...prod, name, category, price: parseFloat(price) } : prod))
-  }
 
   const handleDeleteProduct = (id: number) => {
     setProducts(products.filter(prod => prod.id !== id))

@@ -1,4 +1,4 @@
-import AllProducts from "../_components/all-products";
+import AllProducts from "../../_components/all-products";
 import { api, HydrateClient } from "@/trpc/server";
 const ProductsPage = async () => {
   void api.product.getAll.prefetch()

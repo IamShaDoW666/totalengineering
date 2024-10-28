@@ -32,4 +32,28 @@ export const productRouter = createTRPCRouter({
         },
       });
     }),
+
+  create: publicProcedure
+    .input(z.object({ name: z.string(), description: z.string().optional(), categoryId: z.number() }))
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.db.product.create({ data: input });
+    }),
+
+  delete: publicProcedure.input(z.number()).mutation(async ({ ctx, input }) => {
+    return await ctx.db.product.delete({ where: { id: input } });
+  }),
+
+  update: publicProcedure
+    .input(
+      z.object({
+        id: z.number(),
+        product: z.object({ name: z.string(), description: z.string().optional(), categoryId: z.number() }),
+      }),
+    )
+    .mutation(async ({ ctx, input }) => {
+      return await ctx.db.product.update({
+        data: input.product,
+        where: { id: input.id },
+      });
+    }),
 });

@@ -37,9 +37,6 @@ const MobileMenu = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void 
             <Link href="/" className="text-lg font-medium" onClick={onClose}>
               Home
             </Link>
-            <Link href="/products" className="text-lg font-medium" onClick={onClose}>
-              Products
-            </Link>
             <Link href="/about" className="text-lg font-medium" onClick={onClose}>
               About
             </Link>

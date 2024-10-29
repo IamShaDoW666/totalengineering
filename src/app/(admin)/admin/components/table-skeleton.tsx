@@ -18,7 +18,7 @@ export default function TableSkeleton() {
           </tr>
         </thead>
         <tbody className="bg-background/50 divide-y divide-secondary">
-          {[...Array(4)].map((_, index) => (
+          {[1,2,3,4,5,6,7,8].map((_, index) => (
             <tr key={index} className="p-2 align-middle">
               <td className="px-6 py-4 whitespace-nowrap">
                 <Skeleton className="h-4 w-8" />

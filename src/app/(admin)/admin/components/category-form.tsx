@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import type { z } from "zod";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -19,10 +19,10 @@ import SuccessAlert from "@/app/_components/success-alert";
 
 export function CategoryCreateModal() {
   const utils = api.useUtils();
-  const { mutate, data, isPending, isSuccess } =
+  const { mutate, isPending, isSuccess } =
     api.category.create.useMutation({
-      onSuccess: () => {
-        utils.category.getAll.invalidate();
+      onSuccess: async () => {
+        await utils.category.getAll.invalidate();
       },
     });
   const form = useForm<z.infer<typeof categoryCreateSchema>>({

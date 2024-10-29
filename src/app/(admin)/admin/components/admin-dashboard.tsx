@@ -23,15 +23,14 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Package, LayoutGrid, PlusCircle, Pencil, Trash2 } from "lucide-react";
 import { api } from "@/trpc/react";
-import { ToggleTheme } from "@/app/_components/toggle-theme";
 import TableSkeleton from "./table-skeleton";
 import { CategoryCreateModal } from "./category-form";
 
 export default function AdminDashboard() {
   const utils = api.useUtils()
   const categories = api.category.getAll.useQuery();
-  const {data, mutate, isPending, isSuccess} = api.category.delete.useMutation({onSuccess: () => {
-    utils.category.getAll.invalidate()
+  const {mutate} = api.category.delete.useMutation({onSuccess: async () => {
+    await utils.category.getAll.invalidate()
   }});
   const [isOpen, setIsOpen] = useState(false);  
   const [products, setProducts] = useState([

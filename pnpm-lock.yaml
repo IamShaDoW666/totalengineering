@@ -4,6 +4,9 @@ dependencies:
   '@faker-js/faker':
     specifier: ^9.0.3
     version: 9.0.3
+  '@hookform/resolvers':
+    specifier: ^3.9.1
+    version: 3.9.1(react-hook-form@7.53.1)
   '@prisma/client':
     specifier: ^5.14.0
     version: 5.14.0(prisma@5.20.0)
@@ -88,6 +91,9 @@ dependencies:
   react-floating-whatsapp:
     specifier: ^5.0.8
     version: 5.0.8(react-dom@18.3.1)(react@18.3.1)
+  react-hook-form:
+    specifier: ^7.53.1
+    version: 7.53.1(react@18.3.1)
   schema-dts:
     specifier: ^1.1.2
     version: 1.1.2(typescript@5.6.3)
@@ -245,6 +251,14 @@ packages:
     dependencies:
       fast-deep-equal: 3.1.3
       supercluster: 8.0.1
+    dev: false
+
+  /@hookform/resolvers@3.9.1(react-hook-form@7.53.1):
+    resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
+    dependencies:
+      react-hook-form: 7.53.1(react@18.3.1)
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:
@@ -3563,6 +3577,15 @@ packages:
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+    dev: false
+
+  /react-hook-form@7.53.1(react@18.3.1):
+    resolution: {integrity: sha512-6aiQeBda4zjcuaugWvim9WsGqisoUk+etmFEsSUMm451/Ic8L/UAb7sRtMj3V+Hdzm6mMjU1VhiSzYUZeBm0Vg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-is@16.13.1:

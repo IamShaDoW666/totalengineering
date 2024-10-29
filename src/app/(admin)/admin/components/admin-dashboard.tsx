@@ -1,53 +1,71 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Package, LayoutGrid, PlusCircle, Pencil, Trash2 } from "lucide-react"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Package, LayoutGrid, PlusCircle, Pencil, Trash2 } from "lucide-react";
+import { api } from "@/trpc/react";
+import { ToggleTheme } from "@/app/_components/toggle-theme";
+import TableSkeleton from "./table-skeleton";
+import { CategoryCreateModal } from "./category-form";
 
 export default function AdminDashboard() {
-  const [categories, setCategories] = useState([
-    { id: 1, name: "Electronics" },
-    { id: 2, name: "Clothing" },
-    { id: 3, name: "Books" },
-  ])
-
+  const utils = api.useUtils()
+  const categories = api.category.getAll.useQuery();
+  const {data, mutate, isPending, isSuccess} = api.category.delete.useMutation({onSuccess: () => {
+    utils.category.getAll.invalidate()
+  }});
+  const [isOpen, setIsOpen] = useState(false);  
   const [products, setProducts] = useState([
     { id: 1, name: "Laptop", category: "Electronics", price: 999.99 },
     { id: 2, name: "T-Shirt", category: "Clothing", price: 19.99 },
     { id: 3, name: "Novel", category: "Books", price: 9.99 },
-  ])
-
-
-
-
-  const handleDeleteCategory = (id: number) => {
-    setCategories(categories.filter(cat => cat.id !== id))
-  }
-
+  ]);
 
 
   const handleDeleteProduct = (id: number) => {
-    setProducts(products.filter(prod => prod.id !== id))
-  }
+    setProducts(products.filter((prod) => prod.id !== id));
+  };
 
   return (
     <div className="flex h-screen bg-secondary">
-      {/* Sidebar */}
+      {/* Sidebar */}      
       <aside className="w-64 bg-background shadow-md">
         <div className="p-4">
-          <h1 className="text-2xl font-bold text-foreground">Admin Dashboard</h1>
+          <h1 className="text-2xl font-bold text-foreground">
+            Admin Dashboard
+          </h1>
         </div>
         <nav className="mt-4">
-          <a href="#categories" className="flex items-center px-4 py-2 text-foreground hover:bg-secondary">
+          <a
+            href="#categories"
+            className="flex items-center px-4 py-2 text-foreground hover:bg-secondary"
+          >
             <LayoutGrid className="mr-2" size={20} />
             Categories
           </a>
-          <a href="#products" className="flex items-center px-4 py-2 text-foreground hover:bg-secondary">
+          <a
+            href="#products"
+            className="flex items-center px-4 py-2 text-foreground hover:bg-secondary"
+          >
             <Package className="mr-2" size={20} />
             Products
           </a>
@@ -55,7 +73,7 @@ export default function AdminDashboard() {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-auto">
+      <main className="flex-1 overflow-auto p-8">
         <Tabs defaultValue="categories">
           <TabsList>
             <TabsTrigger value="categories">Categories</TabsTrigger>
@@ -64,7 +82,7 @@ export default function AdminDashboard() {
 
           {/* Categories Tab */}
           <TabsContent value="categories">
-            <div className="mb-4 flex justify-between items-center">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-2xl font-bold">Categories</h2>
               <Dialog>
                 <DialogTrigger asChild>
@@ -77,58 +95,93 @@ export default function AdminDashboard() {
                   <DialogHeader>
                     <DialogTitle>Add New Category</DialogTitle>
                   </DialogHeader>
-
-                    <Label htmlFor="name">Category Name</Label>
-                    <Input id="name" name="name" required />
-                    <Button  className="mt-4">Add Category</Button>
-               
+                  <CategoryCreateModal />
                 </DialogContent>
               </Dialog>
             </div>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>ID</TableHead>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {categories.map((category) => (
-                  <TableRow key={category.id}>
-                    <TableCell>{category.id}</TableCell>
-                    <TableCell>{category.name}</TableCell>
-                    <TableCell>
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button variant="outline" size="icon" className="mr-2">
-                            <Pencil size={16} />
-                          </Button>
-                        </DialogTrigger>
-                        <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>Edit Category</DialogTitle>
-                          </DialogHeader>
-                        
-                            <Label htmlFor="edit-name">Category Name</Label>
-                            <Input id="edit-name" name="name" defaultValue={category.name} required />
-                            <Button type="submit" className="mt-4">Update Category</Button>
-                        
-                        </DialogContent>
-                      </Dialog>
-                      <Button variant="outline" size="icon" onClick={() => handleDeleteCategory(category.id)}>
-                        <Trash2 size={16} />
-                      </Button>
-                    </TableCell>
+            {categories.data ? (
+              <Table>
+                <TableHeader>
+                  <TableRow className="rounded-t bg-background/35 hover:bg-background/35">
+                    <TableHead>ID</TableHead>
+                    <TableHead>Name</TableHead>
+                    <TableHead>Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {categories.data?.map((category) => (
+                    <TableRow
+                      className="bg-background/50 hover:bg-background"
+                      key={category.id}
+                    >
+                      <TableCell>{category.id}</TableCell>
+                      <TableCell>{category.name}</TableCell>
+                      <TableCell>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="mr-2"
+                            >
+                              <Pencil size={16} />
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Edit Category</DialogTitle>
+                            </DialogHeader>
+
+                            <Label htmlFor="edit-name">Category Name</Label>
+                            <Input
+                              id="edit-name"
+                              name="name"
+                              defaultValue={category.name}
+                              required
+                            />
+                            <Button type="submit" className="mt-4">
+                              Update Category
+                            </Button>
+                          </DialogContent>
+                        </Dialog>
+                        <Dialog open={isOpen}>
+                          <DialogTrigger asChild>
+                            <Button onClick={() => setIsOpen(true)} variant="outline" size="icon">
+                              <Trash2 size={16} />
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Are you sure?</DialogTitle>
+                            </DialogHeader>
+                            <div className="flex items-center justify-around py-8">
+                              <Button onClick={() => {
+                                mutate(category.id)
+                                  setIsOpen(false)                              
+                              }} className="w-1/3" variant={"destructive"}>
+                                Delete
+                              </Button>
+                              <DialogClose asChild>
+                                <Button className="w-1/3" variant={"outline"}>
+                                  Cancel
+                                </Button>
+                              </DialogClose>
+                            </div>
+                          </DialogContent>
+                        </Dialog>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            ) : (
+              <TableSkeleton />
+            )}
           </TabsContent>
 
           {/* Products Tab */}
           <TabsContent value="products">
-            <div className="mb-4 flex justify-between items-center">
+            <div className="mb-4 flex items-center justify-between">
               <h2 className="text-2xl font-bold">Products</h2>
               <Dialog>
                 <DialogTrigger asChild>
@@ -141,21 +194,28 @@ export default function AdminDashboard() {
                   <DialogHeader>
                     <DialogTitle>Add New Product</DialogTitle>
                   </DialogHeader>
-                 
-                    <Label htmlFor="product-name">Product Name</Label>
-                    <Input id="product-name" name="name" required />
-                    <Label htmlFor="product-category">Category</Label>
-                    <Input id="product-category" name="category" required />
-                    <Label htmlFor="product-price">Price</Label>
-                    <Input id="product-price" name="price" type="number" step="0.01" required />
-                    <Button type="submit" className="mt-4">Add Product</Button>
-           
+
+                  <Label htmlFor="product-name">Product Name</Label>
+                  <Input id="product-name" name="name" required />
+                  <Label htmlFor="product-category">Category</Label>
+                  <Input id="product-category" name="category" required />
+                  <Label htmlFor="product-price">Price</Label>
+                  <Input
+                    id="product-price"
+                    name="price"
+                    type="number"
+                    step="0.01"
+                    required
+                  />
+                  <Button type="submit" className="mt-4">
+                    Add Product
+                  </Button>
                 </DialogContent>
               </Dialog>
             </div>
             <Table>
               <TableHeader>
-                <TableRow>
+                <TableRow className="rounded-t bg-background/35 hover:bg-background/35">
                   <TableHead>ID</TableHead>
                   <TableHead>Name</TableHead>
                   <TableHead>Category</TableHead>
@@ -165,7 +225,10 @@ export default function AdminDashboard() {
               </TableHeader>
               <TableBody>
                 {products.map((product) => (
-                  <TableRow key={product.id}>
+                  <TableRow
+                    key={product.id}
+                    className="bg-background/50 hover:bg-background"
+                  >
                     <TableCell>{product.id}</TableCell>
                     <TableCell>{product.name}</TableCell>
                     <TableCell>{product.category}</TableCell>
@@ -173,7 +236,11 @@ export default function AdminDashboard() {
                     <TableCell>
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button variant="outline" size="icon" className="mr-2">
+                          <Button
+                            variant="outline"
+                            size="icon"
+                            className="mr-2"
+                          >
                             <Pencil size={16} />
                           </Button>
                         </DialogTrigger>
@@ -181,18 +248,44 @@ export default function AdminDashboard() {
                           <DialogHeader>
                             <DialogTitle>Edit Product</DialogTitle>
                           </DialogHeader>
-                       
-                            <Label htmlFor="edit-product-name">Product Name</Label>
-                            <Input id="edit-product-name" name="name" defaultValue={product.name} required />
-                            <Label htmlFor="edit-product-category">Category</Label>
-                            <Input id="edit-product-category" name="category" defaultValue={product.category} required />
-                            <Label htmlFor="edit-product-price">Price</Label>
-                            <Input id="edit-product-price" name="price" type="number" step="0.01" defaultValue={product.price} required />
-                            <Button type="submit" className="mt-4">Update Product</Button>
-                  
+
+                          <Label htmlFor="edit-product-name">
+                            Product Name
+                          </Label>
+                          <Input
+                            id="edit-product-name"
+                            name="name"
+                            defaultValue={product.name}
+                            required
+                          />
+                          <Label htmlFor="edit-product-category">
+                            Category
+                          </Label>
+                          <Input
+                            id="edit-product-category"
+                            name="category"
+                            defaultValue={product.category}
+                            required
+                          />
+                          <Label htmlFor="edit-product-price">Price</Label>
+                          <Input
+                            id="edit-product-price"
+                            name="price"
+                            type="number"
+                            step="0.01"
+                            defaultValue={product.price}
+                            required
+                          />
+                          <Button type="submit" className="mt-4">
+                            Update Product
+                          </Button>
                         </DialogContent>
                       </Dialog>
-                      <Button variant="outline" size="icon" onClick={() => handleDeleteProduct(product.id)}>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={() => handleDeleteProduct(product.id)}
+                      >
                         <Trash2 size={16} />
                       </Button>
                     </TableCell>
@@ -204,5 +297,5 @@ export default function AdminDashboard() {
         </Tabs>
       </main>
     </div>
-  )
+  );
 }

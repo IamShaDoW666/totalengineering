@@ -27,7 +27,7 @@ export default function GallerySection() {
     <section className="bg-background px-8 sm:px-4 md:px-2 py-12">      
       <div className="px-4 md:px-6 mx-auto">
         <h2 className="text-3xl text-primary/80 font-bold tracking-tighter sm:text-4xl text-center mb-12">Our Gallery</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {galleryItems.map((item, index) => (
             <motion.div
               key={item.id}
@@ -37,7 +37,7 @@ export default function GallerySection() {
             >
               <Dialog>
                 <DialogTrigger asChild>
-                  <Card className="overflow-hidden w-full md:w-3/4 mx-auto cursor-pointer transition-transform duration-300 hover:scale-105">
+                  <Card className="overflow-hidden w-full  mx-auto cursor-pointer transition-transform duration-300 hover:scale-105">
                     <CardContent className="p-0">
                       <Image
                         src={item.src}
@@ -46,7 +46,7 @@ export default function GallerySection() {
                         height={500}
                         className="w-full h-72 object-cover"
                       />
-                      <h1 className='text-center text-2xl py-4'>{item.title}</h1>
+                      {/* <h1 className='text-center text-2xl py-4'>{item.title}</h1> */}
                     </CardContent>
                   </Card>
                 </DialogTrigger>

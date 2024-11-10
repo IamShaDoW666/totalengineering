@@ -8,7 +8,12 @@ import { useEffect, useState } from "react"
 
 const slides = [
   {
-    image: "/slide3.jpg",
+    image: "/total2.jpg",
+    title: "Precision-Crafted Staircase Systems",
+    description: "Create a lasting impression with stairs that are as functional as they are visually stunning..",
+  },
+  {
+    image: "/totaleng5.webp",
     title: "Delivering Precision and Quality in Every Turn",
     description: "Discover amazing products and services tailored just for you.",
   },
@@ -18,8 +23,8 @@ const slides = [
     description: "Find the perfect item from our wide range of selections.",
   },
   {
-    image: "/slider2.jpg",
-    title: "Join Our Community",
+    image: "/totaleng.jpg",
+    title: "Explore Our Custom Architectural Steel Designs",
     description: "Be part of a growing network of satisfied customers.",
   },
 ]
@@ -33,7 +38,7 @@ export default function AnimatedHeroSlider() {
       if (isAutoPlaying) {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length)
       }
-    }, 5000) // Change slide every 5 seconds
+    }, 5000) 
 
     return () => clearInterval(timer)
   }, [isAutoPlaying])

@@ -39,7 +39,7 @@ const specs = [
   {
     title: "Customer Focus",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur diam tortor, tincidunt eget viverra",
+      " we specialize in custom steel fabrication tailored to bring your architectural vision to life.",
     icon: User,
   },
 ];

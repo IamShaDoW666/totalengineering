@@ -7,17 +7,19 @@ import Image from "next/image"
 import InfiniteSlider from './infinite-slider'
 
 const galleryItems = [
+ 
+ 
+  { id: 7, src: "/total3.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 8, src: "/total4.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 9, src: "/total5.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 10, src: "/total6.jpeg",alt: "Gallery Image 6",title: "" },
+  { id: 11, src: "/total7.jpeg",alt: "Gallery Image 6",title: "" },
   { id: 1, src: "/2-1.png", alt: "Gallery Image 1",title: "" },
   { id: 2, src: "/5.png", alt: "Gallery Image 2",title: "" },
   { id: 3, src: "/7.png", alt: "Gallery Image 3",title: "" },
   { id: 4, src: "/9.png", alt: "Gallery Image 4",title: "" },
   { id: 5, src: "/23.png", alt: "Gallery Image 5",title: "" },
   { id: 6, src: "/23.png", alt: "Gallery Image 6",title: "" },
-  { id: 7, src: "/total3.jpeg",alt: "Gallery Image 6",title: "" },
-  { id: 8, src: "/total4.jpeg",alt: "Gallery Image 6",title: "" },
-  { id: 9, src: "/total5.jpeg",alt: "Gallery Image 6",title: "" },
-  { id: 10, src: "/total6.jpeg",alt: "Gallery Image 6",title: "" },
-  { id: 11, src: "/total7.jpeg",alt: "Gallery Image 6",title: "" },
 ]
 
 export default function GallerySection() {

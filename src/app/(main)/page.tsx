@@ -15,8 +15,9 @@ export default async function Home() {
         <HeroSection />
         <QuoteSection />
         <ImageContentSection />
-        <GallerySection />
         <CardSection />
+        <GallerySection />
+        
         <Faq />
         <ContactSection />
         <AddressMap />

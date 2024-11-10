@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import {motion} from 'framer-motion'
 export default function ImageContentSection() {
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-primary text-primary-foreground dark:bg-gray-900 overflow-hidden">
+    <section className="py-0 md:py-2 lg:py-2 bg-primary text-primary-foreground dark:bg-gray-900 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="space-y-4 md:space-y-6">
@@ -33,7 +33,7 @@ export default function ImageContentSection() {
             initial={{opacity: 0}}
             whileInView={{opacity: 1}}
             transition={{duration: 0.8, delay: 0.3}}
-            className="flex flex-col gap-2 min-[400px]:flex-row">
+            className="flex flex-col gap-2 min-[800px]:flex-row">
               <Button size="lg" className="text-lg">Get Started</Button>
               <Button size="lg" variant="outline" className="text-primary text-lg">Learn More</Button>
             </motion.div>
@@ -46,13 +46,13 @@ export default function ImageContentSection() {
             <Image
               alt="Digital Transformation"
               className="object-cover"
-              height="600"
-              src={`/11.png`}
+              height={800}
+              src={`/totaleng6.jpg`}
               style={{
-                aspectRatio: "800/600",
+                width:"100%",
                 objectFit: "cover",
               }}
-              width="800"
+              width={1600}
             />
           </motion.div>
         </div>

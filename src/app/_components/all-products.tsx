@@ -20,7 +20,7 @@ export default function AllProducts() {
   >();
   const products = api.product.getAll.useQuery(selectedCategory);
   const categories = api.category.getAll.useQuery();
-  console.log(categories)
+  console.log(categories);
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -45,9 +45,7 @@ export default function AllProducts() {
 
   return (
     <div className="mx-auto bg-background px-4 py-12">
-      <h1 className="text-center text-4xl text-primary">
-        Our Products
-      </h1>
+      <h1 className="text-center text-4xl text-primary">Our Products</h1>
       <div className="mb-8 flex justify-end">
         <Select
           onValueChange={handleCategoryChange}

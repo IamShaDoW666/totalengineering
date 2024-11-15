@@ -15,14 +15,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Pencil, PlusCircle, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@radix-ui/react-label";
 import { api } from "@/trpc/react";
 import TableSkeleton from "../components/table-skeleton";
+
 const ProductsPage = () => {
   const { data: products } = api.product.getAll.useQuery();
+  const { data: categories } = api.category.getAll.useQuery();
   return (
     <div className="flex-1 p-8">
       <div className="mb-4 flex items-center justify-between">
@@ -57,70 +66,80 @@ const ProductsPage = () => {
           </DialogContent>
         </Dialog>
       </div>
-      {products ? (
-        <Table>
-          <TableHeader>
-            <TableRow className="rounded-t bg-background/35 hover:bg-background/35">
-              <TableHead>ID</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Price</TableHead>
-              <TableHead>Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {products.map((product) => (
-              <TableRow
-                key={product.id}
-                className="bg-background/50 hover:bg-background"
-              >
-                <TableCell>{product.id}</TableCell>
-                <TableCell>{product.name}</TableCell>
-                <TableCell>{product.category?.name}</TableCell>
-                <TableCell>$50</TableCell>
-                <TableCell>
-                  <Dialog>
-                    <DialogTrigger asChild>
-                      <Button variant="outline" size="icon" className="mr-2">
-                        <Pencil size={16} />
-                      </Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Edit Product</DialogTitle>
-                      </DialogHeader>
-
-                      <Label htmlFor="edit-product-name">Product Name</Label>
-                      <Input
-                        id="edit-product-name"
-                        name="name"
-                        defaultValue={product.name}
-                        required
-                      />
-                      <Label htmlFor="edit-product-category">Category</Label>
-                      <Input
-                        id="edit-product-category"
-                        name="category"
-                        defaultValue={product.category?.name}
-                        required
-                      />
-
-                      <Button type="submit" className="mt-4">
-                        Update Product
-                      </Button>
-                    </DialogContent>
-                  </Dialog>
-                  <Button variant="outline" size="icon">
-                    <Trash2 size={16} />
-                  </Button>
-                </TableCell>
+      <div className="max-h-[80vh] overflow-auto">
+        {products ? (
+          <Table>
+            <TableHeader>
+              <TableRow className="rounded-t bg-background/35 hover:bg-background/35">
+                <TableHead>ID</TableHead>
+                <TableHead>Name</TableHead>
+                <TableHead>Category</TableHead>
+                <TableHead>Price</TableHead>
+                <TableHead>Actions</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      ) : (
-        <TableSkeleton />
-      )}
+            </TableHeader>
+            <TableBody>
+              {products.map((product) => (
+                <TableRow
+                  key={product.id}
+                  className="bg-background/50 hover:bg-background"
+                >
+                  <TableCell>{product.id}</TableCell>
+                  <TableCell>{product.name}</TableCell>
+                  <TableCell>{product.category?.name}</TableCell>
+                  <TableCell>$50</TableCell>
+                  <TableCell>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button variant="outline" size="icon" className="mr-2">
+                          <Pencil size={16} />
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>Edit Product</DialogTitle>
+                        </DialogHeader>
+
+                        <Label htmlFor="edit-product-name">Product Name</Label>
+                        <Input
+                          id="edit-product-name"
+                          name="name"
+                          defaultValue={product.name}
+                          required
+                        />
+                        <Label htmlFor="edit-product-category">Category</Label>
+                        <Select>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {categories?.map((category) => (
+                              <>
+                                <SelectItem value={category.id.toString()}>
+                                  {category.name}
+                                </SelectItem>
+                              </>
+                            ))}
+                          </SelectContent>
+                        </Select>
+
+                        <Button type="submit" className="mt-4">
+                          Update Product
+                        </Button>
+                      </DialogContent>
+                    </Dialog>
+                    <Button variant="outline" size="icon">
+                      <Trash2 size={16} />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        ) : (
+          <TableSkeleton />
+        )}
+      </div>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
-
+import Credentials from "next-auth/providers/credentials";
 import { db } from "@/server/db";
 
 /**
@@ -32,7 +31,29 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    Credentials({
+      // The name to display on the sign in form (e.g. 'Sign in with...')
+      name: "Credentials",
+      // The credentials object is passed to the callback function
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials, req) {
+        const user = await db.user.findFirst({
+          where: {
+            email: credentials.email ?? "",
+            password: credentials.password ?? "",
+          },
+        });
+
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
+      },
+    }),
     /**
      * ...add more providers here.
      *
@@ -52,9 +73,5 @@ export const authConfig = {
         id: user.id,
       },
     }),
-    authorized: async ({ auth }) => {
-      // Logged in users are authenticated, otherwise redirect to login page
-      return !!auth;
-    },
   },
 } satisfies NextAuthConfig;

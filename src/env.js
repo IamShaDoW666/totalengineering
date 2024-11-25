@@ -12,7 +12,8 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     BASE_URL: z.string().url(),
-    APP_NAME: z.string()
+
+    APP_NAME: z.string(),
   },
 
   /**
@@ -22,7 +23,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_BASE_URL: z.string().url(),
-    NEXT_PUBLIC_APP_NAME: z.string()
+    NEXT_PUBLIC_APP_NAME: z.string(),
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
   },
 
@@ -36,7 +37,7 @@ export const env = createEnv({
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
     BASE_URL: process.env.BASE_URL,
-    APP_NAME: process.env.APP_NAME
+    APP_NAME: process.env.APP_NAME,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

@@ -37,11 +37,14 @@ export default function AnimatedHeroSlider() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const { data: slides } = api.slider.getAll.useQuery();
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (isAutoPlaying) {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % slides!.length);
-      }
-    }, 5000);
+    let timer: NodeJS.Timeout;
+    if (slides) {
+      timer = setInterval(() => {
+        if (isAutoPlaying) {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % slides!.length);
+        }
+      }, 5000);
+    }
 
     return () => clearInterval(timer);
   }, [isAutoPlaying]);

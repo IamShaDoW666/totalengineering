@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "./_components/theme-provider";
+import { HydrateClient } from "@/trpc/server";
 
 export const metadata: Metadata = {
   title: "TotalEngineering",
@@ -18,15 +19,16 @@ export default function RootLayout({
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
         <TRPCReactProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >            
-            {children}
-            
-          </ThemeProvider>
+          <HydrateClient>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+            </ThemeProvider>
+          </HydrateClient>
         </TRPCReactProvider>
       </body>
     </html>

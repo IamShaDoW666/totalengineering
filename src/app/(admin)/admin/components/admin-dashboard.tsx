@@ -25,6 +25,7 @@ import { Package, LayoutGrid, PlusCircle, Pencil, Trash2 } from "lucide-react";
 import { api } from "@/trpc/react";
 import TableSkeleton from "./table-skeleton";
 import { CategoryCreateModal } from "./category-form";
+import { signOut } from "@/server/auth";
 
 export default function AdminDashboard() {
   const utils = api.useUtils();

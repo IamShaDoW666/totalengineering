@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-    provider = "prisma-client-js"
-    // previewFeatures = ["driverAdapters"]
+    provider        = "prisma-client-js"
+    previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -45,7 +45,7 @@ model User {
     name          String?
     email         String?   @unique
     emailVerified DateTime?
-    password      String
+    password      String?
     image         String?
     accounts      Account[]
     sessions      Session[]

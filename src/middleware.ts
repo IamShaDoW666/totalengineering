@@ -7,7 +7,7 @@ const protectedUrls = ["/admin"]; // Add your protected URLs here
 export default async function middleware(request: NextRequest) {
   const url = request.nextUrl.clone();
   const session = await auth();
-
+  console.log(session);
   if (!session && protectedUrls.some((path) => url.pathname.startsWith(path))) {
     url.pathname = "/login";
     return NextResponse.redirect(url);

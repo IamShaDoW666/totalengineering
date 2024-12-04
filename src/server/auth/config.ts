@@ -3,6 +3,7 @@ import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 import { db } from "@/server/db";
+import { use } from "react";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -45,15 +46,25 @@ export const authConfig = {
         const user = await db.user.findFirst({
           where: {
             email: credentials.email ?? "",
-            password: credentials.password ?? "",
           },
         });
-
-        if (user) {
-          return user;
-        } else {
-          return null;
-        }
+        return user;
+        // if (user) {
+        //   if (!user.password) {
+        //     await db.user.update({
+        //       data: { password: credentials.password ?? "" },
+        //       where: { id: user.id },
+        //     });
+        //     return user;
+        //   }
+        //   if (user.password === credentials.password) {
+        //     console.log("VALIDATED");
+        //     return user;
+        //   }
+        //   return null;
+        // } else {
+        //   return null;
+        // }
       },
     }),
     GithubProvider,

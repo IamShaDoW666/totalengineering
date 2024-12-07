@@ -8,8 +8,6 @@ const AdminPage = async () => {
 
   return (
     <>
-      <SignOut />
-      <p>{JSON.stringify(session)}</p>
       <AdminDashboard />
     </>
   );

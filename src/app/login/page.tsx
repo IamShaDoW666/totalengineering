@@ -4,8 +4,10 @@ import SignIn from "../_components/client/sign-in";
 const LoginPage = () => {
   return (
     <>
-      <LoginComponent />
-      <SignIn />
+      {/* <LoginComponent /> */}
+      <div className="flex h-screen w-full flex-col items-center justify-center">
+        <SignIn />
+      </div>
     </>
   );
 };

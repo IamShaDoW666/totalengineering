@@ -33,40 +33,41 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    Credentials({
-      // The name to display on the sign in form (e.g. 'Sign in with...')
-      name: "Credentials",
-      // The credentials object is passed to the callback function
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-      async authorize(credentials, req) {
-        console.log(credentials);
-        const user = await db.user.findFirst({
-          where: {
-            email: credentials.email ?? "",
-          },
-        });
-        return user;
-        // if (user) {
-        //   if (!user.password) {
-        //     await db.user.update({
-        //       data: { password: credentials.password ?? "" },
-        //       where: { id: user.id },
-        //     });
-        //     return user;
-        //   }
-        //   if (user.password === credentials.password) {
-        //     console.log("VALIDATED");
-        //     return user;
-        //   }
-        //   return null;
-        // } else {
-        //   return null;
-        // }
-      },
-    }),
+    // Credentials({
+    //   // The name to display on the sign in form (e.g. 'Sign in with...')
+    //   name: "Credentials",
+    //   // The credentials object is passed to the callback function
+    //   credentials: {
+    //     email: { label: "Email", type: "text" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials, req) {
+    //     console.log(credentials);
+    //     const user = await db.user.findFirst({
+    //       where: {
+    //         email: credentials.email ?? "",
+    //       },
+    //     });
+    //     console.log(user);
+    //     return user;
+    //     // if (user) {
+    //     //   if (!user.password) {
+    //     //     await db.user.update({
+    //     //       data: { password: credentials.password ?? "" },
+    //     //       where: { id: user.id },
+    //     //     });
+    //     //     return user;
+    //     //   }
+    //     //   if (user.password === credentials.password) {
+    //     //     console.log("VALIDATED");
+    //     //     return user;
+    //     //   }
+    //     //   return null;
+    //     // } else {
+    //     //   return null;
+    //     // }
+    //   },
+    // }),
     GithubProvider,
     /**
      * ...add more providers here.

@@ -1,5 +1,4 @@
 import { auth } from "@/server/auth";
-import { log } from "console";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 

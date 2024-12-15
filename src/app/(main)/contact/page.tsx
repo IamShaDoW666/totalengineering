@@ -34,7 +34,9 @@ const ContactPage = () => {
       {
         "@type": "LocalBusiness",
         "@id": "https://totaleng.in/#localbusiness",
-        "name": NAME,  
+        "name": NAME,
+        "telephone" : "+919514399331",
+        "image": IMAGE,
         "url": "https://totaleng.in",
         "logo": LOGO,  
         "contactPoint": {

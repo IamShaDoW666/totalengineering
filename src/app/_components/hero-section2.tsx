@@ -75,8 +75,11 @@ const Slider = () => {
 export default function HeroPage() {
   return (
     <div className="container mx-auto px-4">
+        <h2 className="text-3xl text-primary font-bold tracking-tighter sm:text-5xl text-center mb-8 mt-8">Contact Us</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center min-h-[calc(100vh-64px)]">
+    
         <div className="h-[400px] md:h-[600px]">
+       
           <Slider />
         </div>
         <div className="space-y-6">

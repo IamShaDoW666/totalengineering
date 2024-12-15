@@ -32,8 +32,8 @@ const ContactPage = () => {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://totaleng.in/#organization",
+        "@type": "LocalBusiness",
+        "@id": "https://totaleng.in/#localbusiness",
         "name": NAME,  
         "url": "https://totaleng.in",
         "logo": LOGO,  
@@ -52,15 +52,44 @@ const ContactPage = () => {
           "addressRegion": "Thamilnadu", 
           "postalCode": "12345",  
           "addressCountry": "IN"  
-        }
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+            ],
+            "opens": "9:00",
+            "closes": "18:00"
+          },
+          
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "9:00",
+            "closes": "2:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "closed",
+            "closes": "closed"
+          }
+        ],
+        
       },
+      
       {
         "@type": "WebSite",
         "@id": "https://totaleng.in/#website",
         "url": "https://totaleng.in",
-        "name": "Your Business Name",  
+        "name": NAME,  
         "publisher": {
-          "@id": "https://totaleng.in/#organization"
+          "@id": "https://totaleng.in/#localbusiness"
         },
         "inLanguage": "en-US"
       },
@@ -103,6 +132,7 @@ const ContactPage = () => {
         ]
       }
     ]
+    
   };
   
   return (

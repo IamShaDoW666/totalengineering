@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import ContactUs from "../../_components/contact-us";
-import { IMAGE, NAME, URL } from "@/lib/constants";
+import { IMAGE, LOGO, NAME, URL } from "@/lib/constants";
 import type { Graph} from "schema-dts";
 
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 const ContactPage = () => {
-  const jsonLd = {
+  const jsonLd:Graph = {
     "@context": "https://schema.org",
     "@graph": [
       {
@@ -36,7 +36,7 @@ const ContactPage = () => {
         "@id": "https://totaleng.in/#organization",
         "name": NAME,  
         "url": "https://totaleng.in",
-        "logo": "https://totaleng.in/logo.png",  
+        "logo": LOGO,  
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+919514399331",
@@ -67,7 +67,7 @@ const ContactPage = () => {
       {
         "@type": "ImageObject",
         "@id": "https://totaleng.in/#image",
-        "url": "https://totaleng.in/image.jpg",  
+        "url": IMAGE,  
         "width": "200",
         "height": "200",
         "inLanguage": "en-US"
@@ -107,6 +107,10 @@ const ContactPage = () => {
   
   return (
     <div className="pt-24">
+       <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      /> 
     <ContactUs />
     </div>
   );

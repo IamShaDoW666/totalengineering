@@ -4,9 +4,7 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
-import type { Metadata } from "next"
-import { Graph} from "schema-dts"
-import { IMAGE, NAME,URL } from "@/lib/constants"
+
 
 
 export default function AboutUs() {

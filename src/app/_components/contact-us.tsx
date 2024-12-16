@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MapPin } from "lucide-react"
 import HeroPage from "./hero-section2";
 import MapComponent from "./client/map";
+import ContactSection from "./contact-section"
 
 const locations = [
   {
@@ -21,9 +22,9 @@ const locations = [
 
 export default function ContactPage() {
   return (
-    <><HeroPage />
+    <><HeroPage /><ContactSection />
     <div className="container mx-auto px-4 py-8">
-          {/* <h1 className="text-3xl font-bold mb-8">Contact Us</h1> */}
+           {/* <h1 className="text-3xl font-bold mb-8">Contact Us</h1>  */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 items-center">
               <div>
                   <h2 className="text-2xl font-semibold mb-4">Our Locations</h2>

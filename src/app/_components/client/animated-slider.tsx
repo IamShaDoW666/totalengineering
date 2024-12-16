@@ -14,8 +14,8 @@ const slides = [
   },
   {
     image: "/totaleng5.webp",
-    title: "Delivering Precision and Quality in Every Turn",
-    description: "Discover amazing products and services tailored just for you.",
+    title: "Elevate Your Interior with Unique Cladding",
+    description: "Sleek & Durable Facade Designs.",
   },
   {
     image: "/slider1.jpg",

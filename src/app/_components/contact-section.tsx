@@ -56,7 +56,7 @@ export default function ContactSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl text-primary font-bold tracking-tighter sm:text-5xl text-center mb-8">Contact Us</h2>
+          {/* <h2 className="text-3xl text-primary font-bold tracking-tighter sm:text-5xl text-center mb-8">Contact Us</h2> */}
           <p className="text-xl text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
             We&apos;d love to hear from you. Please fill out this form or use one of our contact methods below.
           </p>

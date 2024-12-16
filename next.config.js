@@ -6,6 +6,7 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
+    reactStrictMode: true,
     images: {
         remotePatterns: [
             {
@@ -25,7 +26,8 @@ const config = {
                 hostname: 'loremflickr.com'
             }
         ]
-    }
+    },
+  
 };
 
 export default config;

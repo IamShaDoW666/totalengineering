@@ -1,13 +1,15 @@
 import "@/styles/globals.css";
-
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { TRPCReactProvider } from "@/trpc/react";
 import { ThemeProvider } from "./_components/theme-provider";
+import { DESCRIPTION, TITLE } from "@/lib/constants";
+
+
 
 export const metadata: Metadata = {
-  title: "TotalEngineering",
-  description: "Fabrication Service in Coimbatore",
+  title: TITLE,
+  description: DESCRIPTION,
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

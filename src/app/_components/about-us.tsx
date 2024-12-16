@@ -5,12 +5,16 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 
+
+
 export default function AboutUs() {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 }
   }
+
+  
 
   // const teamMembers = [
   //   { name: "Jane Doe", role: "CEO", image: "https://fastly.picsum.photos/id/38/500/500.jpg?hmac=P2ck2JJoFY6U4RS1VwfQve2kzwgG-1D_6PwXf-oi5jo" },
@@ -19,7 +23,9 @@ export default function AboutUs() {
   // ]
 
   return (
+
     <div className="container mx-auto px-4 py-8 ">
+      
       {/* Hero Section */}
       <motion.section className="text-center mb-16 mt-16" {...fadeIn}>
         <motion.h1

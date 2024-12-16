@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build && next-sitemap",
+    "build": "next build",
     "db:generate": "prisma migrate dev",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
@@ -47,7 +47,6 @@
     "lucide-react": "^0.447.0",
     "next": "^14.2.4",
     "next-auth": "5.0.0-beta.25",
-    "next-sitemap": "^4.2.3",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

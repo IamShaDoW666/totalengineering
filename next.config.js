@@ -6,28 +6,31 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const config = {
-    reactStrictMode: true,
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'fastly.picsum.photos',                
-            },
-            {
-                protocol: 'http',
-                hostname: 'localhost'
-            },
-            {
-                protocol: 'https',
-                hostname: 'picsum.photos'
-            },
-            {
-                protocol: 'https',
-                hostname: 'loremflickr.com'
-            }
-        ]
-    },
-  
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "loremflickr.com",
+      },
+      {
+        protocol: "https",
+        hostname: "totaleng.in",
+      },
+    ],
+  },
 };
 
 export default config;

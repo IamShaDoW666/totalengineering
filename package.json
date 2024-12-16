@@ -4,14 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "db:generate": "prisma migrate dev",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "dev": "next dev",
     "postinstall": "prisma generate",
-    "postbuild": "next-sitemap",
     "lint": "next lint",
     "start": "next start",
     "seed": "tsx prisma/seed.ts"

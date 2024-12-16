@@ -26,7 +26,8 @@ const config = {
                 hostname: 'loremflickr.com'
             }
         ]
-    }
+    },
+  
 };
 
 export default config;
